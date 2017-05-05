@@ -1,8 +1,8 @@
 ## 1.AutoResizeToCrop是什么?
 
-AutoResizeToCrop是ps对图程序，脚本部分负责已对图数据导出，web部分负责对图。
+AutoResizeToCrop是ps对图程序，脚本部分负责已对图数据的导出，web部分负责对图。
 
-## 2.如何安装？
+## 2.如何使用？
 
 以Adobe Photoshop CC 2017和OSX为例
 
@@ -14,7 +14,7 @@ AutoResizeToCrop是ps对图程序，脚本部分负责已对图数据导出，we
 
 ![02](README/02.jpg)
 
-3. 下载MAMP(https://www.mamp.info/en/)或类似程序，搭建基于AutoResizeToCrop_HTML的网站
+3. 下载[MAMP](https://www.mamp.info/en/)或类似程序，搭建基于AutoResizeToCrop_HTML的网站
 
 ![03](README/03.jpg)
 
@@ -30,7 +30,19 @@ AutoResizeToCrop是ps对图程序，脚本部分负责已对图数据导出，we
 
 ![06](README/06.jpg)
 
-## 3.让程序做的更多
+## 3.一些要求
+
+1. 大图和切图在一个组里，执行脚本时选择这个组
+
+2. 大图在上，切图在下
+
+3. 大图必须是智能对象
+
+3. 请尽量不要在大图和切图上应用样式，虽然程序考虑了使用图层蒙版、图形蒙版和剪切蒙版的情况。
+
+![08](README/08.jpg)
+
+## 4.让程序做的更多
 
 AutoResizeToCrop基于已对图数据进行进一步对图（模板匹配）
 
