@@ -1,0 +1,132 @@
+html,body,div,canvas,h1,p
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background-color: #ffffff;
+}
+div
+{
+    box-sizing: border-box;
+}
+.headline,.banner,.indicators,.btn-match,.results
+{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.headline
+{
+    margin-top: 10px;
+}
+/*banner*/
+.banner
+{
+    position: relative;
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+}
+canvas
+{
+    position: absolute;
+}
+.source-canvas
+{
+    opacity: 0.5;
+}
+.border
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border: solid 1px #7d0014;
+}
+/*indicators*/
+.indicator p
+{
+    width: 120px;
+    line-height: 30px;
+    display: inline-block;
+    vertical-align: top;
+}
+.indicator div
+{
+    display: inline-block;
+    width: 1px;
+    height: 30px;
+    background-color: #ce3045;
+}
+/*results*/
+.result p
+{
+    width: 120px;
+    line-height: 30px;
+    display: inline-block;
+    vertical-align: top;    
+}
+.result p:last-child
+{
+    font-weight: bold;
+    color:#ce3045;
+}
+
+.btn-match
+{
+    width:120px;
+    line-height:30px;
+    border-radius: 15px;
+    background-color: #b32c39;
+    color: #ffffff;
+    text-align: center;
+}
+
+.btn-match_m
+{
+    animation: btn-match-ani 1s infinite;       
+}
+
+@-webkit-keyframes btn-match-ani{
+    0%{
+        background-color: #b32c39;
+    }
+    50%{
+        background-color: #cddc39;
+    }
+    100%{
+        background-color: #b32c39;
+    }
+}
+
+@-moz-keyframes btn-match-ani{
+    0%{
+        background-color: #b32c39;
+    }
+    50%{
+        background-color: #cddc39;
+    }
+    100%{
+        background-color: #b32c39;
+    }
+}
+
+@keyframes btn-match-ani{
+    0%{
+        background-color: #b32c39;
+    }
+    50%{
+        background-color: #cddc39;
+    }
+    100%{
+        background-color: #b32c39;
+    }
+}
+
+
+
+
+

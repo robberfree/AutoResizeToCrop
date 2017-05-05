@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="js/Util.js"></script>
+    <script type="text/javascript" src="js/Timer.js"></script>
+    <script type="text/javascript" src="js/Grays.js"></script>
+    <script type="text/javascript" src="js/TemplateMatch.js"></script>
+    <script type="text/javascript" src="js/SourceImgs.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <meta charset="utf-8" />
+    <title>AutoResizeToCrop</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <h1 class="headline">Auto Resize To Crop</h1>
+    <div class="banner">
+        <canvas class="source-canvas"></canvas>
+        <canvas class="template-canvas"></canvas>
+        <div class="border"></div>
+    </div>
+    <div class="indicators">
+        <div class="indicator indicator-source">
+            <p>加载大图用时:</p>
+            <div></div>
+            <p>0S</p>
+        </div>
+        <div class="indicator indicator-template">
+            <p>加载切图用时:</p>
+            <div></div>
+            <p>0S</p>
+        </div>
+        <div class="indicator indicator-match">
+            <p>对图用时:</p>
+            <div></div>
+            <p>0S</P>
+        </div>
+    </div>
+    <div class="btn-match">开始</div>
+    <div class="results">
+        <div class="result result-position">
+            <p>(x,y):</p>
+            <p>(-1,-1)</p>
+        </div>
+        <div class="result result-scale">
+            <p>scale:</p>
+            <p>00.00%</p>
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>
