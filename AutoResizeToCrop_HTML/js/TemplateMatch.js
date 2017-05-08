@@ -29,28 +29,45 @@ TemplateMatch.prototype = {
     },
     //计算大图的缩放范围
     caculateScale: function () {
-        var scaleWidth = Util.fixedFloat(this.data.sourceBounds.w / this.sourceImg.width);
-        var scaleHeight = Util.fixedFloat(this.data.sourceBounds.h / this.sourceImg.height);
-        if (Math.abs(scaleWidth - scaleHeight) > 0.001) {
-            alert('大图似乎没有锁定缩放比例');
+        var scaleMin;
+        var scaleInit;
+        var scaleMax;
+        //不限制缩放
+        if (this.scaleDuration < 0) {
+            var widthTByS = Util.fixedFloat(this.templateWidth / this.sourceImg.width);
+            var heightTByS = Util.fixedFloat(this.templateHeight / this.sourceImg.height);
+            scaleMin = widthTByS > heightTByS ? widthTByS : heightTByS;
+            scaleMax = 1;
+            scaleInit = Util.fixedFloat((scaleMin + scaleMax) * 0.5);
         }
+        //限制缩放
+        else {
+            var scaleWidth = Util.fixedFloat(this.data.sourceBounds.w / this.sourceImg.width);
+            var scaleHeight = Util.fixedFloat(this.data.sourceBounds.h / this.sourceImg.height);
+            if (Math.abs(scaleWidth - scaleHeight) > 0.001) {
+                alert('大图似乎没有锁定缩放比例');
+            }
 
-        var scaleMin = scaleWidth - this.scaleDuration;
-        scaleMin = scaleMin <= 0 ? this.scaleStep : scaleMin;
-        scaleMin = Util.fixedFloat(scaleMin);
+            scaleMin = scaleWidth - this.scaleDuration;
+            scaleMin = scaleMin <= 0 ? this.scaleStep : scaleMin;
+            scaleMin = Util.fixedFloat(scaleMin);
 
-        var scaleMax = scaleWidth + this.scaleDuration;
-        scaleMax = scaleMax > 1 ? 1 : scaleMax;
-        scaleMax = Util.fixedFloat(scaleMax);
+            //不将缩放最大值限制到1
+            scaleMax = scaleWidth + this.scaleDuration;
+            scaleMax = Util.fixedFloat(scaleMax);
+
+            scaleInit = scaleWidth;
+        }
 
         return {
             min: scaleMin,
-            init: scaleWidth,
+            init: scaleInit,
             max: scaleMax
         }
     },
     matchTemplateScales: function () {
         var scale = this.caculateScale();
+        console.log(scale);
 
         //计算已经在ps里对图的结果，作为计算的基准数据
         var result = this.matchTemplateScale(scale.init);
@@ -145,22 +162,24 @@ TemplateMatch.prototype = {
         if (maxX < 0 || maxY < 0)
             return false;
 
-        //方法2进一步修正，提高计算效率
-        var ratioX = (this.data.templateBounds.x - this.data.sourceBounds.x) / this.data.sourceBounds.w;
-        var ratioY = (this.data.templateBounds.y - this.data.sourceBounds.y) / this.data.sourceBounds.h;
-        if (ratioX >= 0 && ratioY >= 0) {
-            var x = Math.round(ratioX * sourceWidth);
-            var y = Math.round(ratioY * sourceHeight);
-            var minX2 = x - this.positionDuration;
-            var maxX2 = x + this.positionDuration;
-            var minY2 = y - this.positionDuration;
-            var maxY2 = y + this.positionDuration;
+        //限制位置，方法2进一步修正，提高计算效率
+        if (this.positionDuration >= 0) {
+            var ratioX = (this.data.templateBounds.x - this.data.sourceBounds.x) / this.data.sourceBounds.w;
+            var ratioY = (this.data.templateBounds.y - this.data.sourceBounds.y) / this.data.sourceBounds.h;
+            if (ratioX >= 0 && ratioY >= 0) {
+                var x = Math.round(ratioX * sourceWidth);
+                var y = Math.round(ratioY * sourceHeight);
+                var minX2 = x - this.positionDuration;
+                var maxX2 = x + this.positionDuration;
+                var minY2 = y - this.positionDuration;
+                var maxY2 = y + this.positionDuration;
 
-            //综合方法1和方法2
-            minX = Math.max(minX, minX2);
-            maxX = Math.min(maxX, maxX2);
-            minY = Math.max(minY, minY2);
-            maxY = Math.min(maxY, maxY2);
+                //综合方法1和方法2
+                minX = Math.max(minX, minX2);
+                maxX = Math.min(maxX, maxX2);
+                minY = Math.max(minY, minY2);
+                maxY = Math.min(maxY, maxY2);
+            }
         }
 
         return {
