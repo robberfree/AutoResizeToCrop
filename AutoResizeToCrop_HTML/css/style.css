@@ -83,6 +83,11 @@ canvas
     background-color: #b32c39;
     color: #ffffff;
     text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .btn-match_m
