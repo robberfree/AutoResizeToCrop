@@ -1,7 +1,6 @@
 function Timer(text, bar) {
     this.text = text;
     this.bar = bar;
-    this.frameTime = 1 / 24 * 1;
     this.unitBySecond = 10;
 }
 

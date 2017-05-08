@@ -87,44 +87,10 @@ canvas
 
 .btn-match_m
 {
-    animation: btn-match-ani 1s infinite;       
+    background-color: #1b5e20;    
 }
 
-@-webkit-keyframes btn-match-ani{
-    0%{
-        background-color: #b32c39;
-    }
-    50%{
-        background-color: #cddc39;
-    }
-    100%{
-        background-color: #b32c39;
-    }
-}
 
-@-moz-keyframes btn-match-ani{
-    0%{
-        background-color: #b32c39;
-    }
-    50%{
-        background-color: #cddc39;
-    }
-    100%{
-        background-color: #b32c39;
-    }
-}
-
-@keyframes btn-match-ani{
-    0%{
-        background-color: #b32c39;
-    }
-    50%{
-        background-color: #cddc39;
-    }
-    100%{
-        background-color: #b32c39;
-    }
-}
 
 
 

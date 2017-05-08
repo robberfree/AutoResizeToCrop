@@ -30,6 +30,8 @@ function keyUpHandler(e) {
 
 function startMatch() {
     btnMatch.classList.add('btn-match_m');
+    btnMatch.textContent="计算中..."
+    
     loadData('../data/data.json', loadedDataHandler);
 }
 
@@ -67,6 +69,7 @@ function loadedDataHandler(_data) {
             document.querySelector('.result-position p:last-child').textContent = '(' + result.x + ',' + result.y + ')';
             document.querySelector('.result-scale p:last-child').textContent = '' + (result.scale * 100).toFixed(2) + '%';
 
+            btnMatch.textContent="开始"
             btnMatch.classList.remove('btn-match_m');
 
             timerMatch.stop();
@@ -98,9 +101,7 @@ function loadTemplateImg(url, onCompleteHandler) {
     img.onload = function () {
         templateImg = img;
         timerLoadTemplate.stop();
-
-        //document.body.appendChild(img);
-
+                
         onCompleteHandler();
     }
     img.src = url;
